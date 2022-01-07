@@ -323,6 +323,11 @@
             </svg>
           </button>
 
+          <button type="button" class="cool-lightbox-toolbar__btn" title="Download" @click="download">
+            <slot name="download">
+              <svg style="transform: scale(0.8);" xmlns="http://www.w3.org/2000/svg" width="14" height="23" viewBox="0 0 14 23"><g><g><path fill="#fff" d="M8.383 0H6.432v14.015l-4.288-4.54-1.363 1.477 6.626 7.017 6.627-7.017-1.364-1.478-4.287 4.54z"/></g><g><path fill="#fff" d="M14.034 20.844H.78V23h13.253z"/></g></g></svg>
+            </slot>
+          </button>
           <button type="button" v-if="showCloseButton" class="cool-lightbox-toolbar__btn" title="Close" @click="close">
             <slot name="close">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -1483,6 +1488,11 @@ export default {
       this.$emit("close", this.imgIndex);
       this.showThumbs = false;
       this.imgIndex = null;
+    },
+
+    // close event
+    download() {
+      this.$emit("download", this.imgIndex);
     },
 
     wheelEvent(event) {
